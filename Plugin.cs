@@ -230,9 +230,9 @@ namespace BadJujuRPHUD
             player.Player.setPluginWidgetFlag((EPluginWidgetFlags)2016, false);
             player.Player.setPluginWidgetFlag((EPluginWidgetFlags)2048, false);
             player.Player.setPluginWidgetFlag(EPluginWidgetFlags.ShowVehicleStatus, false);
-            this.UpdaterHud(player, "heal", player.Player.life.health);
-            this.UpdaterHud(player, "food", player.Player.life.food);
-            this.UpdaterHud(player, "water", player.Player.life.water);
+            this.UpdaterHud(player, "Health", player.Player.life.health);
+            this.UpdaterHud(player, "Food", player.Player.life.food);
+            this.UpdaterHud(player, "Water", player.Player.life.water);
             EffectManager.sendUIEffectText(Conf.EffectKey, GetPlayer(player), true, "player_balance", "$" + " "+  player.Experience.ToString());
             EffectManager.sendUIEffectText(Conf.EffectKey, GetPlayer(player), true, "player_name", player.DisplayName);
             EffectManager.sendUIEffectText(Conf.EffectKey, GetPlayer(player), true, "in_location", RegionHelper.GetNearestRegion(player).Name);
@@ -266,12 +266,12 @@ namespace BadJujuRPHUD
 
         private void OnHealth(UnturnedPlayer player, byte health)
         {
-            this.UpdaterHud(player, "heal", health);
+            this.UpdaterHud(player, "Health", health);
         }
 
         private void OnFood(UnturnedPlayer player, byte food)
         {
-            this.UpdaterHud(player, "food", food);
+            this.UpdaterHud(player, "Food", food);
             if (food < 5)
             {
                 NotifyHelper.SetNotify(player, Notify.FOOD);
@@ -284,7 +284,7 @@ namespace BadJujuRPHUD
 
         private void OnWater(UnturnedPlayer player, byte water)
         {
-            this.UpdaterHud(player, "water", water);
+            this.UpdaterHud(player, "Water", water);
             if(water < 5)
             {
                 NotifyHelper.SetNotify(player, Notify.WATER);
@@ -299,9 +299,9 @@ namespace BadJujuRPHUD
 
         private void OnRevive(UnturnedPlayer player, Vector3 position, byte angle)
         {
-            this.UpdaterHud(player, "heal", player.Player.life.health);
-            this.UpdaterHud(player, "food", player.Player.life.food);
-            this.UpdaterHud(player, "water", player.Player.life.water);
+            this.UpdaterHud(player, "Health", player.Player.life.health);
+            this.UpdaterHud(player, "Food", player.Player.life.food);
+            this.UpdaterHud(player, "Water", player.Player.life.water);
        
 
 
@@ -319,12 +319,12 @@ namespace BadJujuRPHUD
                 bool flag = i != (int)_volume;
                 if (flag)
                 {
-                    EffectManager.sendUIEffectVisibility(Conf.EffectKey, this.GetPlayer(_player), true, string.Format("{0}_slider_{1}", _name, i), false);
+                    EffectManager.sendUIEffectVisibility(Conf.EffectKey, this.GetPlayer(_player), true, string.Format("{0}BarFront ({1})", _name, i), false);
                 }
                 else
                 {
              
-                    EffectManager.sendUIEffectVisibility(Conf.EffectKey, this.GetPlayer(_player), true, string.Format("{0}_slider_{1}", _name, _volume), true);
+                    EffectManager.sendUIEffectVisibility(Conf.EffectKey, this.GetPlayer(_player), true, string.Format("{0}BarFront ({1})", _name, _volume), true);
                 }
             }
         }
